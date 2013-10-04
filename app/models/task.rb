@@ -4,7 +4,7 @@ class Task < ActiveRecord::Base
   belongs_to :list
 
   def complete!
-    self.complete = 1
+    self.complete = true
     self.save
   end 
 
