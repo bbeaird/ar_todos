@@ -43,3 +43,22 @@ desc "Run the specs"
 RSpec::Core::RakeTask.new(:spec)
 
 task :default  => :specs
+
+
+desc 'generate migration file skeleton'
+task 'generate:migration' do
+  migration_name = ARGV.last
+  camelized_migration_name = migration_name.split('_').map {|w| w.capitalize}.join
+  directory = File.dirname(__FILE__) + '/db/migrate/'
+  filepath = "#{directory + Time.now.strftime('%Y%m%d%H%M%S')}_#{migration_name}.rb"
+
+
+  filecontents =
+    "class #{camelized_migration_name} < ActiveRecord::Migration\n" +
+    "  # this is for you to implement :)\n" +
+    "end"
+
+  File.open(filepath, 'w') { |file| file.write(filecontents) }
+
+  task ARGV.last.to_sym do ; end
+end
