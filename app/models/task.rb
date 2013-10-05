@@ -3,6 +3,7 @@ require_relative '../../config/application'
 class Task < ActiveRecord::Base
   belongs_to :list
 
+
   def complete!
     self.complete = true
     self.save
