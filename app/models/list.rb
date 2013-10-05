@@ -20,6 +20,7 @@ class List < ActiveRecord::Base
     self.tasks
   end
 end
+
           
 test_list = List.new(id: 1)
 t2 = Task.new(list_id: 1)
