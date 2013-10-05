@@ -1,14 +1,14 @@
 require_relative '../../config/application'
 
-
 class List < ActiveRecord::Base
   has_many :tasks
-  def list
-    self.each do |task|
-      puts task
-    end
+    
+  def lister
+    self.tasks
   end
 end
 
-# first_list = List.first
-# first_list.tasks.each {|task| p task }
+          
+# test_list = List.new(id: 1)
+# t2 = Task.new(list_id: 1)
+# puts test_list.tasks.map {|task| task.text}
