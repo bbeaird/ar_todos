@@ -12,6 +12,7 @@ class Controller
     when 'add'
       Task.create!(text: @description, list_id: 1, complete: false)
     when 'list'
+      
     when 'delete'
     when 'complete'
     end
