@@ -10,5 +10,5 @@ class List < ActiveRecord::Base
   end
 end
 
-test_list = List.new
-p test_list.methods.sort
+# first_list = List.first
+# first_list.tasks.each {|task| p task }
