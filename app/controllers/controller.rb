@@ -9,13 +9,20 @@ class Controller
     @description = ARGV[1..-1].join(" ")
 
     case @command.downcase
-    when 'add'
-      Task.create!(text: @description, list_id: 1, complete: false)
-    when 'list'
-      
-    when 'delete'
-    when 'complete'
+      when 'add'
+        Task.create!(text: @description, list_id: 1, complete: false)
+      when 'list'
+        #Task.all.each {|task| p task.text}      
+         List.find(@description).tasks.each {|task| p task.text}
+      when 'delete'
+         Task.find(@description).destroy
+      # when 'complete'
+      else
+        puts 'wtf.'
     end
+
+    
+
   end
 
 
@@ -25,7 +32,7 @@ class Controller
 end
 
 Controller.run!
-p Task.all.each {|task| p task.text }
+# Task.all.each {|task| p task.text }
 # lister(1)
 
   # def lister(list_num)
